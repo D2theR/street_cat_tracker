@@ -1,0 +1,11 @@
+version: "3"
+services:
+  street_cat_tracker:
+    image: street_cat_tracker:main
+    env_file:
+      - ./.dev.env
+    command: python ./tflite/webstream.py --ip 0.0.0.0 --port 4321
+    ports:
+      - "4321:4321"
+    devices:
+    - "/dev/video0:/dev/video0"
